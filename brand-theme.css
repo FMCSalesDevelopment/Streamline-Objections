@@ -1,0 +1,224 @@
+/* ============================
+   Freedom Mortgage – Game UI Theme
+   Drop this file in the repo root as: brand-theme.css
+   Then include it LAST in <head> so it overrides earlier styles.
+   ============================ */
+
+/* 1) Brand Tokens -------------------------------------------------------- */
+:root{
+  /* Core palette */
+  --fm-blue-900: #1D3146;   /* Web Blue (dark) */
+  --fm-blue-600: #00476A;   /* Supporting/medium blue */
+  --fm-blue-400: #499CC9;   /* Bright Blue (on white) */
+  --fm-blue-300: #6ED8FF;   /* Bright Blue (on dark/medium) */
+  --fm-teal-400: #35CCBA;   /* Teal */
+  --fm-teal-700: #00838F;   /* Dark Teal */
+  --fm-gold-500: #A18732;   /* Web Gold */
+
+  /* Neutrals */
+  --fm-white: #FFFFFF;
+  --fm-black: #111319;
+  --fm-gray-900: #1b2430;
+  --fm-gray-700: #2a3442;
+  --fm-gray-500: #6b7787;
+  --fm-gray-300: #d6dde6;
+  --fm-gray-100: #eef2f7;
+
+  /* Shadows & Radii */
+  --fm-shadow-1: 0 1px 2px rgba(0,0,0,.08), 0 6px 24px rgba(0,0,0,.08);
+  --fm-shadow-2: 0 8px 28px rgba(0,0,0,.15);
+  --fm-radius: 14px;
+
+  /* Typography */
+  --fm-font-sans: "Poppins", Arial, sans-serif;
+  --fm-font-size: 16px;
+  --fm-letter-tight: -0.01em;
+
+  /* Component heights */
+  --fm-input-h: 44px;
+  --fm-btn-h: 46px;
+
+  /* Focus ring */
+  --fm-focus: 0 0 0 3px rgba(110,216,255,.65); /* fm-blue-300 */
+}
+
+/* 2) Global Resets ------------------------------------------------------- */
+* { box-sizing: border-box; }
+html { font-size: 100%; }
+body {
+  margin: 0;
+  font-family: var(--fm-font-sans);
+  font-size: var(--fm-font-size);
+  line-height: 1.45;
+  color: var(--fm-white);
+  background: radial-gradient(1000px 600px at 20% -10%, rgba(73,156,201,.15), transparent 60%),
+              radial-gradient(800px 500px at 100% 0%, rgba(53,204,186,.10), transparent 55%),
+              var(--fm-blue-900);
+  letter-spacing: var(--fm-letter-tight);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Containers */
+.container, .wrapper, main {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding: clamp(16px, 2.5vw, 28px);
+}
+
+/* 3) Type scale ---------------------------------------------------------- */
+h1, h2, h3, h4 { margin: 0 0 .5em; font-weight: 700; }
+h1 { font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+p, li { color: #e9eef5; }
+
+/* 4) Links --------------------------------------------------------------- */
+a { color: var(--fm-blue-300); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 5) Buttons ------------------------------------------------------------- */
+button, .btn, [role="button"] {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  height: var(--fm-btn-h);
+  padding: 0 1.1rem;
+  border-radius: var(--fm-radius);
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, var(--fm-blue-400), #2e87b3);
+  color: var(--fm-white);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--fm-shadow-1);
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+}
+button:hover, .btn:hover { transform: translateY(-1px); box-shadow: var(--fm-shadow-2); }
+button:active, .btn:active { transform: translateY(0); filter: brightness(.95); }
+button:focus-visible, .btn:focus-visible { outline: none; box-shadow: var(--fm-focus); }
+
+/* Secondary / Ghost */
+.btn-secondary {
+  background: transparent;
+  border-color: rgba(255,255,255,.25);
+  color: var(--fm-white);
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.06); }
+
+/* Danger / Cancel (uses Dark Teal to keep palette consistent & accessible) */
+.btn-cancel { background: var(--fm-teal-700); }
+.btn-cancel:hover { filter: brightness(1.05); }
+
+/* 6) Inputs -------------------------------------------------------------- */
+input, select, textarea {
+  width: 100%;
+  height: var(--fm-input-h);
+  padding: 0 .9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.07);
+  color: var(--fm-white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+input::placeholder, textarea::placeholder { color: #cfe6f5; opacity: .85; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; box-shadow: var(--fm-focus); }
+
+/* 7) Cards / Panels ------------------------------------------------------ */
+.card, .panel, .scoreboard, .hud {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--fm-radius);
+  padding: clamp(14px, 2vw, 22px);
+  box-shadow: var(--fm-shadow-1);
+}
+
+/* 8) Game Board & Tiles -------------------------------------------------- */
+.board, .grid { 
+  display: grid; 
+  gap: 10px; 
+  background: rgba(255,255,255,.06); 
+  border-radius: 16px; 
+  padding: 12px; 
+  border: 1px solid rgba(255,255,255,.12);
+}
+.tile, .cell, .card-item {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  border-radius: 12px;
+  color: var(--fm-blue-900);
+  background: var(--fm-blue-300);
+  box-shadow: 0 2px 0 rgba(0,0,0,.15), inset 0 -2px 6px rgba(0,0,0,.1);
+}
+.tile--active, .cell--active { background: var(--fm-teal-400); }
+.tile--disabled, .is-disabled { filter: grayscale(.3) brightness(.7); cursor: not-allowed; }
+
+/* 9) Header / Footer ----------------------------------------------------- */
+.site-header {
+  background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.2)), var(--fm-blue-900);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.site-footer {
+  color: #cbd9e6;
+  border-top: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.35));
+}
+
+/* 10) Badges / Status ---------------------------------------------------- */
+.badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  border-radius: 999px; padding: .25rem .6rem; font-weight: 600; font-size: .85rem;
+  background: rgba(110,216,255,.15); color: var(--fm-blue-300); border: 1px solid rgba(110,216,255,.35);
+}
+.badge--gold { background: rgba(161,135,50,.15); color: var(--fm-gold-500); border-color: rgba(161,135,50,.35); }
+
+/* 11) Tables ------------------------------------------------------------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .6rem .8rem; text-align: left; }
+thead th {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  color: var(--fm-white);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+tbody tr { border-bottom: 1px solid rgba(255,255,255,.1); }
+tbody tr:hover { background: rgba(255,255,255,.06); }
+
+/* 12) Modals ------------------------------------------------------------- */
+.modal, .dialog {
+  background: rgba(0,0,0,.6);
+  position: fixed; inset: 0; display: none;
+}
+.modal.open, .dialog[open] { display: grid; place-items: center; }
+.modal__content, .dialog__content {
+  width: min(680px, 92vw);
+  background: var(--fm-white);
+  color: var(--fm-blue-900);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: var(--fm-shadow-2);
+  padding: clamp(18px, 2.4vw, 28px);
+}
+
+/* 13) Progress / Meters -------------------------------------------------- */
+progress, .progress {
+  width: 100%; height: 10px; border-radius: 999px; background: rgba(255,255,255,.15);
+  overflow: hidden; border: none; display: block;
+}
+.progress__bar { height: 100%; background: linear-gradient(90deg, var(--fm-teal-400), var(--fm-blue-300)); }
+
+/* 14) Accessibility helpers --------------------------------------------- */
+/* Ensure visible focus, adequate contrast, and large tap targets. */
+:where(button, .btn, a, input, select, textarea) { min-height: 40px; }
+:where(button, .btn, a):focus-visible { outline: none; box-shadow: var(--fm-focus); }
+
+/* High contrast user preference */
+@media (prefers-contrast: more){
+  :root { --fm-blue-300: #8FE4FF; }
+  .card, .panel { border-color: rgba(255,255,255,.35); }
+}
+
+/* Optional: brand accent separators */
+.hr { height: 3px; background: linear-gradient(90deg, var(--fm-gold-500), transparent 40%); border: 0; }
